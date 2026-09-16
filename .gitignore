@@ -1,8 +1,16 @@
 node_modules/
 __pycache__/
 *.pyc
-.env
 data/
 .DS_Store
-session-*/solution/
-solutions/
+
+# Secrets must never reach this repo - it is public.
+# .dockerignore only keeps files out of an image; it does NOT stop git committing them.
+.env
+.env.*
+*.pem
+*.key
+*_SECRET*
+*secret*.json
+*credentials*.json
+azure.json
