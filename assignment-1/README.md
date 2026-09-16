@@ -80,8 +80,22 @@ your own process will not be able to write to it.
 
 Answer in your `README.md`, with evidence:
 
-1. Report your final image size. Then report the size of a naive single-stage build of
-   the same application. Explain the difference in terms of **layers**.
+1. Build the same application three ways and report the size of each:
+
+   | Build | What it is |
+   |:--|:--|
+   | A | Single-stage, on the **full** `python:3.12` base |
+   | B | Single-stage, on the **slim** base |
+   | C | Your real multi-stage `Dockerfile`, on the slim base |
+
+   You now have two differences: A → B and B → C. **Attribute each one.** How many
+   megabytes does each step save, what is physically in the layers that disappeared, and
+   which of the two did more work? Use `docker history` — the answer is in there, and it
+   is not necessarily the one you would guess.
+
+   Then generalise: describe an application where the B → C saving would be far larger
+   than it is here, and say what about it makes the difference.
+
 2. Change one line of application source and rebuild. Which layers were rebuilt, and
    which came from cache? Explain why, referring to the order of instructions in your
    Dockerfile.
@@ -90,6 +104,9 @@ Answer in your `README.md`, with evidence:
 
 Argue from the `CACHED` markers in your build output, not from wall-clock time. With one
 small dependency the timing difference is noise.
+
+Builds A and B are throwaway — write them as `Dockerfile.a` and `Dockerfile.b`, commit
+them as evidence, and do not deploy them.
 
 ### Part C — Deploy to Azure
 
@@ -184,14 +201,18 @@ output.
 
 | Award | For |
 |--:|:--|
-| 18–20 | Explains the mechanism, and accounts for where the size difference actually comes from rather than assuming |
+| 18–20 | Attributes both size differences to the right cause with numbers from `docker history`, explains B2 and B3 by the mechanism, and generalises correctly |
 | 14–17 | Correct and evidenced, but the explanation is the general story rather than one about this application |
 | 8–13 | Evidence present, explanation thin or partly wrong |
 | 4–7 | Answered from the lecture, with no output of your own — or output that does not match your Dockerfile |
 | 0–3 | Missing, or fabricated |
 
+The B1 decomposition is the part most people get wrong, and it is worth saying plainly:
+the two savings are **not** the same size, and the marks are for reporting what your own
+builds show rather than what you expected them to show.
+
 Two habits that read as genuine: arguing B3 from the `CACHED` markers rather than from
-timings, and being able to say when a multi-stage build *would* pay off more than it does
+timings, and being able to say when a multi-stage build would pay off more than it does
 here.
 
 ### Craft — 10
@@ -241,8 +262,8 @@ resource group. Fill `evidence/` as you work, not the night before the deadline,
   deleting the file later does not help if it is still in the history
 - A `README.md` that describes the code instead of explaining the decisions
 - Part B answered from memory of the lecture rather than from your own build output
-- Attributing the whole of the size difference to one cause without checking how much each
-  one actually accounts for
+- Reporting the three B1 sizes without attributing the two differences — the numbers are
+  the evidence, not the answer
 - Running as root because it was easier
 - An image that works locally but was never actually deployed
 

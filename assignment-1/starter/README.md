@@ -43,10 +43,16 @@ TODO
 
 ### B1 — image size
 
-| Build | Size |
-|:--|--:|
-| Multi-stage (`Dockerfile`) | TODO |
-| Naive single-stage | TODO |
+| Build | Base | Stages | Size |
+|:--|:--|--:|--:|
+| A — single-stage, full base | `python:3.12` | 1 | TODO |
+| B — single-stage, slim base | | 1 | TODO |
+| C — your `Dockerfile` | | | TODO |
+
+| Step | Saves | What left the image |
+|:--|--:|:--|
+| A → B | TODO | TODO |
+| B → C | TODO | TODO |
 
 Evidence:
 
@@ -54,8 +60,11 @@ Evidence:
 TODO — paste the output of your own docker image ls / docker history
 ```
 
-TODO — explain the difference **in terms of layers**: which layers exist in one image and
-not the other, and what put them there.
+TODO — attribute each of the two differences. Which one did more work, and what is
+physically in the layers that disappeared at each step?
+
+TODO — now generalise. Describe an application where the B → C saving would be far larger
+than it is here, and say what about that application makes the difference.
 
 ### B2 — changing one line of source
 

@@ -11,9 +11,24 @@ Commit this folder. It is graded.
 
 | File | What it holds |
 |:--|:--|
-| `b1-sizes.txt` | `docker image ls` for both builds, and `docker history` for yours |
+| `b1-sizes.txt` | `docker image ls` for all three builds, and `docker history` for each |
 | `b2-cache.txt` | Full build output after changing one line of `app.py` |
 | `b3-cache.txt` | Same change, built against your reordered Dockerfile |
+
+For B1 you need the three images side by side. Tag them so the table reads itself:
+
+```bash
+docker build -f Dockerfile.a -t cc-demo:a . && \
+docker build -f Dockerfile.b -t cc-demo:b . && \
+docker build -f Dockerfile   -t cc-demo:c . && \
+docker image ls cc-demo | tee evidence/b1-sizes.txt
+
+for t in a b c; do
+  echo "=== $t ===" >> evidence/b1-sizes.txt
+  docker history cc-demo:$t --no-trunc --format '{{.Size}}\t{{.CreatedBy}}' \
+    >> evidence/b1-sizes.txt
+done
+```
 
 ```bash
 docker build -t cc-demo:1.0 . 2>&1 | tee evidence/b2-cache.txt
