@@ -136,7 +136,8 @@ most common zero is a file that was never committed.
 
 ## Rubric
 
-Marked out of 100, scaled to 5% of the final grade.
+Marked out of 100, scaled to 5% of the final grade. This is the full breakdown your work
+is marked against — nothing is held back.
 
 | Points | Criterion |
 |--:|:--|
@@ -146,6 +147,69 @@ Marked out of 100, scaled to 5% of the final grade.
 | 10 | **Craft** — clear README, no secrets committed, sensible `.dockerignore`, tidy history |
 
 A submission that does not execute cannot pass, however elegant the code.
+
+### It works — 40
+
+| Award | For |
+|--:|:--|
+| 40 | Builds from a clean clone, runs locally, all three endpoints respond, deployed to ACI and evidenced |
+| 30 | Works locally and in ACI but needed an undocumented fix to build — a missing file, a wrong path |
+| 20 | Works locally; ACI attempted, with evidence of a genuine blocker you documented honestly |
+| 10 | Builds, but the container exits or an endpoint returns a 500 |
+| 0 | Does not build |
+
+A blocker you diagnosed and wrote up scores. A blocker you stayed silent about does not.
+
+### Technique — 30
+
+Five marks each, checked against the built image rather than against what the README
+claims.
+
+| Requirement | Passes if |
+|:--|:--|
+| Multi-stage | Two or more `FROM` lines, and the final stage genuinely omits the build tooling |
+| Pinned base | A specific tag, no `latest` |
+| Non-root | `docker exec <container> id` returns a non-zero uid |
+| Env-var config | Overriding `GREETING` at run time changes the response |
+| Named volume | The counter survives `docker rm -f` followed by a re-run with `-v` |
+| Port | `EXPOSE` present, and the published port chosen at `docker run` |
+
+A bind mount to a host path instead of a named volume works, but scores half — it is not
+what was asked and it does not travel between machines.
+
+### Reasoning — 20
+
+Where the grades actually spread. All three Part B answers must rest on **your own**
+output.
+
+| Award | For |
+|--:|:--|
+| 18–20 | Explains the mechanism, and accounts for where the size difference actually comes from rather than assuming |
+| 14–17 | Correct and evidenced, but the explanation is the general story rather than one about this application |
+| 8–13 | Evidence present, explanation thin or partly wrong |
+| 4–7 | Answered from the lecture, with no output of your own — or output that does not match your Dockerfile |
+| 0–3 | Missing, or fabricated |
+
+Two habits that read as genuine: arguing B3 from the `CACHED` markers rather than from
+timings, and being able to say when a multi-stage build *would* pay off more than it does
+here.
+
+### Craft — 10
+
+| Points | For |
+|--:|:--|
+| 4 | The README explains decisions, and someone else can paste your commands and get a running container |
+| 3 | No secrets anywhere in the history, `.gitignore` present and doing something |
+| 2 | A `.dockerignore` that at minimum excludes `.git`, `.venv`, `__pycache__`, `.env` |
+| 1 | More than one commit, with messages that mean something |
+
+### Deductions
+
+| Deduction | Trigger |
+|--:|:--|
+| Capped at 50 | A live credential committed at any point in the history. Rotate it immediately — the grade is the smaller problem |
+| −10 | Resource group still running when the work is marked |
+| −5 | No GenAI acknowledgement, in either direction. Declaring use costs nothing; silence is the breach |
 
 ## Rules
 

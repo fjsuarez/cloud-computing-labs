@@ -31,7 +31,23 @@ markers.
 | `c3-request.txt` | `curl` against that public IP, with the response body |
 | `c4-secure-var.txt` | The secure variable reading `null` in `az container show` |
 
-Screenshots are accepted for any of these — name them the same way.
+## Screenshots
+
+**Screenshots are welcome, and for Part C they are encouraged.** A portal view of the
+image in ACR or the running container group shows something `az` output does not: that you
+looked at the thing you built. Include both if you like — they cost you nothing and they
+make your Part C easy to believe.
+
+Name them like the captures above, `c2-aci.png` and so on, and put them here.
+
+Two rules:
+
+- **Terminal output goes in as text, not as a picture of text.** It is searchable, it
+  diffs, and it survives being read on a phone. A screenshot of a terminal is the one
+  screenshot that makes your evidence worse.
+- **Read the screenshot before you commit it.** Registry passwords, connection strings and
+  access keys all render perfectly well in a portal blade. Crop or redact them. A
+  credential in a screenshot counts as a committed credential.
 
 ## Before you submit
 
