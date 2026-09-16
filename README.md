@@ -16,6 +16,7 @@ git pull          # before every session
 ```
 patterns/       annotated reference Dockerfiles — read these
 session-NN/     starter code and instructions for each session
+assignment-N/   starter code for the individual assignments
 ```
 
 | Session | Lab |
@@ -28,6 +29,16 @@ session-NN/     starter code and instructions for each session
 | 9 | IaaS — Linux and Bash |
 | 10–11 | Ansible, Terraform |
 | 12–13 | PaaS, design patterns, Azure AI Foundry |
+
+## Assignments
+
+The individual assignment briefs live here too, next to their starter code. Each
+`assignment-N/README.md` **is** the brief — Blackboard only carries the link and the
+deadline. `git pull` before you start and again before you submit.
+
+| # | Assignment | Published |
+|:--|:--|:--|
+| 1 | [Containerise and deploy](assignment-1/README.md) | After Session 4 |
 
 ## Conventions
 

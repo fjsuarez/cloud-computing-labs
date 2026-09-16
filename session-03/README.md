@@ -57,7 +57,7 @@ is around a tenth of a second; on a project with `numpy` and `pandas` the same m
 costs minutes on every build.
 
 Write the answer down — Assignment 1 Part B asks for exactly this reasoning, with your
-own build output as evidence.
+own build output as evidence. The brief and starter are in `labs/assignment-1/`.
 
 ## Part 3 — configuration and state
 

@@ -1,0 +1,14 @@
+# Your submission repository is graded partly on hygiene. Keep this file.
+__pycache__/
+*.pyc
+.venv/
+data/
+*.log
+
+# Secrets. .dockerignore keeps files out of an image; it does NOT stop git committing them.
+.env
+.env.*
+*.pem
+*.key
+*credentials*.json
+azure.json
