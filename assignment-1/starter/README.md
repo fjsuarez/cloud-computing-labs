@@ -89,7 +89,8 @@ readable afterwards:
 
 TODO
 
-Evidence: see `evidence/` — TODO list what is in there.
+Evidence: see `evidence/` — the checklist in `evidence/README.md` says what to capture.
+Replace that file with a short index of what you actually captured.
 
 ## Before this went to production
 

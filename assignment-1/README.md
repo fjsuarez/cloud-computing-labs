@@ -123,9 +123,10 @@ A Git repository containing:
   - The `az` commands you used for Part C
   - A short note on what you would change before running this in production
   - Your acknowledgement of any GenAI use — see the AI policy in the Session 1 deck
-- Evidence of Part C in an `evidence/` folder: terminal output or portal screenshots
-  showing the image in ACR and the container running in ACI, plus a successful request to
-  its public IP
+- Evidence in the `evidence/` folder that ships with the starter: build output for Part B,
+  and for Part C terminal output or portal screenshots showing the image in ACR and the
+  container running in ACI, plus a successful request to its public IP.
+  `evidence/README.md` lists exactly what to capture and what to name it.
 
 Submit the repository link on Blackboard. If it is private, either grant access or submit
 a zip.
@@ -167,7 +168,8 @@ docker build --platform linux/amd64 -t cc-demo:1.0 .
 
 **Capture evidence as you go.** Part B needs your own build output and Part C needs proof
 the thing ran in Azure. Both disappear the moment you close the terminal or delete the
-resource group. Put them in `evidence/` as you work, not the night before the deadline.
+resource group. Fill `evidence/` as you work, not the night before the deadline, and run
+`git ls-files evidence/` before you submit to confirm none of it was left untracked.
 
 ## Common ways to lose marks
 

@@ -12,3 +12,6 @@ data/
 *.key
 *credentials*.json
 azure.json
+
+# Evidence is graded, so nothing above may swallow it - e.g. a *.log capture.
+!evidence/**
