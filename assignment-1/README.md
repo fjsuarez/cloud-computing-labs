@@ -35,14 +35,70 @@ Do not rewrite the application. Containerising it is the exercise.
 
 ## Setting up
 
-Copy the starter into a **new repository of your own**. Do not fork this repository and do
-not commit your work back into it.
+Your work goes in a **new repository of your own**. Do not fork this one, and do not
+commit your work back into it — a fork carries this repository's history and its name, and
+it makes your submission visible to everyone else on the course.
+
+### 1. Copy the starter out
 
 ```bash
 mkdir ~/cc-assignment-1 && cd ~/cc-assignment-1
 cp -r /path/to/cloud-computing-labs/assignment-1/starter/. .
-git init && git add . && git commit -m "Starter"
 ```
+
+The trailing `/.` matters — it copies the hidden files too, and `.gitignore` and
+`.dockerignore` are both hidden. Check they arrived:
+
+```bash
+ls -a        # expect .dockerignore, .gitignore, app.py, requirements.txt, README.md, evidence/
+```
+
+### 2. Make it a repository
+
+```bash
+git init
+git add .
+git commit -m "Starter"
+```
+
+### 3. Create the remote and push
+
+With the [GitHub CLI](https://cli.github.com), one command does all of it:
+
+```bash
+gh repo create cc-assignment-1 --private --source=. --remote=origin --push
+```
+
+Without `gh`: create an empty repository on github.com — **no** README, licence or
+`.gitignore`, or the first push will be rejected as a non-fast-forward — then
+
+```bash
+git remote add origin git@github.com:<your-username>/cc-assignment-1.git
+git branch -M main
+git push -u origin main
+```
+
+**Private or public?** Either is fine, and **private is the safer habit** — it is the one
+that stops a classmate copying your work, and the integrity rules bind you both. If you go
+private, grant read access to **@fjsuarez** so it can be marked, or attach a zip on
+Blackboard instead. A private repository with no access granted is an unmarkable
+submission, and stays late until it can be opened.
+
+### 4. Check it is complete
+
+Clone your own repository somewhere else and build from *that* clone, never from the
+working directory you have been editing:
+
+```bash
+git clone <your-repo-url> /tmp/check && cd /tmp/check
+docker build -t check:1.0 .
+```
+
+If that fails, something is missing or ignored. The most common zero on this assignment is
+a file that was never committed — this is the check that catches it, and it takes ten
+seconds.
+
+### 5. Check the application runs
 
 `starter/README.md` is the skeleton for your submission README. Its headings map onto the
 rubric below — keep them and fill them in.
@@ -145,11 +201,11 @@ A Git repository containing:
   container running in ACI, plus a successful request to its public IP.
   `evidence/README.md` lists exactly what to capture and what to name it.
 
-Submit the repository link on Blackboard. If it is private, either grant access or submit
-a zip.
+Submit **the repository URL** on Blackboard — not a zip of your working directory, and not
+a link to a fork of this repository. If yours is private, grant read access to **@fjsuarez**
+first, or attach a zip as well.
 
-It must build from a clean clone of your repository. Check this before you submit — the
-most common zero is a file that was never committed.
+It must build from a clean clone — see step 4 of *Setting up*.
 
 ## Rubric
 
