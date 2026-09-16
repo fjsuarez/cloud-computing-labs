@@ -6,8 +6,8 @@ and Artificial Intelligence, IE School of Science & Technology.
 Clone this once and pull before each session:
 
 ```bash
-git clone <this-repo-url> cc-labs
-cd cc-labs
+git clone https://github.com/fjsuarez/cloud-computing-labs.git
+cd cloud-computing-labs
 git pull          # before every session
 ```
 
