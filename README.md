@@ -16,7 +16,8 @@ git pull          # before every session
 ```
 patterns/       annotated reference Dockerfiles — read these
 session-NN/     starter code and instructions for each session
-assignment-N/   starter code for the individual assignments
+assignment-N/   brief and starter code for the individual assignments
+project/        the group project handout
 ```
 
 | Session | Lab |
@@ -36,9 +37,19 @@ The individual assignment briefs live here too, next to their starter code. Each
 `assignment-N/README.md` **is** the brief — Blackboard only carries the link and the
 deadline. `git pull` before you start and again before you submit.
 
-| # | Assignment | Published |
+| # | Assignment | Due |
 |:--|:--|:--|
-| 1 | [Containerise and deploy](assignment-1/README.md) | After Session 4 |
+| 1 | [Containerise and deploy](assignment-1/README.md) | Closed |
+| 2 | [Event-driven processing](assignment-2/README.md) | Segovia Mon 14 Dec · Madrid Wed 16 Dec |
+| 3 | [Reproducible infrastructure](assignment-3/README.md) | Segovia Mon 14 Dec · Madrid Wed 16 Dec |
+| 4 | [Data pipeline and scale](assignment-4/README.md) | Segovia Mon 14 Dec · Madrid Wed 16 Dec |
+
+Assignments 2–4 are all open now. Work at your own pace, but each one draws on sessions
+that have not all happened yet — and three assignments in the last week is not a plan.
+
+## Group project
+
+The full handout, deliverables and deadlines: [`project/README.md`](project/README.md).
 
 ## Conventions
 
