@@ -14,3 +14,11 @@ data/
 *secret*.json
 *credentials*.json
 azure.json
+
+# Azure Functions local development. local.settings.json holds connection strings.
+local.settings.json
+.venv/
+.azurite/
+__azurite_db*
+__blobstorage__/
+__queuestorage__/

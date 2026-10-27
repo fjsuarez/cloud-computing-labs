@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.azurite/
+__azurite*
+__blobstorage__/
+__queuestorage__/
+local.settings.json
+local.settings.example.json
+run.py
