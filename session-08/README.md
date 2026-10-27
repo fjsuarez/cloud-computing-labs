@@ -36,8 +36,10 @@ brew tap azure/functions && brew install azure-functions-core-tools@4
 # Windows without Node.js: the MSI installer, or  choco install azure-functions-core-tools
 ```
 
-**It is a big download — about 600 MB.** Do it **before** class, on a good connection. If
-`npm install` fails with `TypeError: chalk.red is not a function`, that is the installer's
+**It is a big download — about 600 MB, 3–4 minutes.** Do it **before** class, on a good
+connection. Recent npm versions print a long `install-scripts … not yet covered by
+allowScripts` warning at the end: it is only a warning, and the install still worked.
+If `npm install` fails with `TypeError: chalk.red is not a function`, that is the installer's
 error handler crashing on top of the real problem: the download dropped. Run the same
 command again. If it keeps failing, download the release zip for your OS from
 <https://github.com/Azure/azure-functions-core-tools/releases/latest>, unzip it somewhere

@@ -211,5 +211,15 @@ arrives. Delete the group.
 ## Before Session 8
 
 Install **Azure Functions Core Tools v4** and check that `func --version` prints `4.x`.
-Session 8 runs functions on your laptop and will not wait for installs. Instructions:
+Session 8 runs functions on your laptop and will not wait for installs.
+
+```bash
+npm install -g azure-functions-core-tools@4                       # any OS with Node.js
+brew tap azure/functions && brew install azure-functions-core-tools@4   # macOS
+```
+
+It is about **600 MB** (3–4 minutes), so do it on a good connection. Recent npm versions
+print a long `install-scripts … not yet covered by allowScripts` warning: it is only a
+warning. Other platforms, WSL notes and a fallback if the download fails are in the
+Session 8 lab README. Microsoft's instructions:
 <https://learn.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools>
