@@ -31,6 +31,15 @@ az functionapp create -g $RG -n $APP --storage-account $ST \
 If the CLI says `unrecognized arguments: --flexconsumption-location`, it is too old for
 Flex Consumption. Run `az upgrade` and try again.
 
+If it says `MissingSubscriptionRegistration ... namespace 'Microsoft.Web'`, your
+subscription has never created a function app or web app. Register the provider once, wait
+for it to finish, and repeat the `az functionapp create`:
+
+```bash
+az provider register -n Microsoft.Web --wait
+az provider show -n Microsoft.Web --query registrationState -o tsv    # Registered
+```
+
 `--disable-app-insights` keeps today fast and free of a Log Analytics workspace. Monitoring
 is Session 8.
 
@@ -94,12 +103,11 @@ the platform in front of it?
 
 ## Part 3 — a queue between the request and the work
 
-Place three orders:
+Place three orders. Run this in the same shell where `$URL` and `$KEY` are set:
 
 ```bash
 for q in 1 2 3; do
-  curl -s -X POST "$URL/orders?code=$KEY" -H "Content-Type: application/json" \
-    -d "{\"item\":\"coffee\",\"qty\":$q,\"price\":1.8}"
+  curl -s -X POST "$URL/orders?code=$KEY" -H "Content-Type: application/json" -d "{\"item\":\"coffee\",\"qty\":$q,\"price\":1.8}"
 done
 ```
 
