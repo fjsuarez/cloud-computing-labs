@@ -13,13 +13,51 @@ You need, on your laptop:
 
 | Tool | Check | If missing |
 |:--|:--|:--|
-| Azure Functions Core Tools **v4** | `func --version` prints `4.x` | [Install Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools) |
+| Azure Functions Core Tools **v4** | `func --version` prints `4.x` | See **Installing Core Tools** below |
 | Python **3.11–3.14** | `python3 --version` | Not 3.10: it leaves support on Flex Consumption on 31 Oct 2026. The lab was tested on 3.12 |
 | **Azurite**, the storage emulator | — | One of the three options in Setup |
 
 Why a storage emulator? Durable Functions keeps its state — queues of work, the history
 of every orchestration — in **Azure Storage**. Locally, Azurite pretends to be that
 storage account.
+
+### Installing Core Tools
+
+Pick **one** method and stick with it. Two installs of different kinds on the same machine
+fight over `func` on your PATH.
+
+```bash
+# Any OS with Node.js (the method the Azure Functions VS Code extension uses)
+npm install -g azure-functions-core-tools@4
+
+# macOS
+brew tap azure/functions && brew install azure-functions-core-tools@4
+
+# Windows without Node.js: the MSI installer, or  choco install azure-functions-core-tools
+```
+
+**It is a big download — about 600 MB.** Do it **before** class, on a good connection. If
+`npm install` fails with `TypeError: chalk.red is not a function`, that is the installer's
+error handler crashing on top of the real problem: the download dropped. Run the same
+command again. If it keeps failing, download the release zip for your OS from
+<https://github.com/Azure/azure-functions-core-tools/releases/latest>, unzip it somewhere
+permanent, and put that folder on your PATH.
+
+**WSL**: follow the Linux steps *inside* WSL — the `npm` line above works there. A `func`
+installed in Windows is not visible from WSL. On Linux, `npm install -g` may need `sudo`
+(then add `--unsafe-perm true`), or a Node.js installed with a version manager such as
+`fnm` or `nvm`, which needs no `sudo` at all.
+
+Then check, in a **new** terminal:
+
+```bash
+func --version      # 4.x
+```
+
+If it says `Permission denied` rather than `command not found`, the installer left `func`
+non-executable: `chmod +x "$(readlink -f "$(which func)")"`.
+
+Full instructions: <https://learn.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools>
 
 ## Setup
 
